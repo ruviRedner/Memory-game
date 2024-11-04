@@ -1,11 +1,21 @@
-import React from 'react'
+import React from 'react';
+import Card from './Card';
+import { ListCards } from '../App';
 
-const Grid = () => {
-  return (
-    <div className='grid'>
-      Grid
-    </div>
-  )
+interface Props {
+  list: ListCards[];
+  setList: (list: ListCards[]) => void;
+  handleCardClick: (card: ListCards) => void;
 }
 
-export default Grid
+const Grid = ({ list, setList, handleCardClick }: Props) => {
+  return (
+    <div className='grid'>
+      {list.map((item) => (
+        <Card key={item.id} card={item} handleCardClick={handleCardClick} />
+      ))}
+    </div>
+  );
+};
+
+export default Grid;
